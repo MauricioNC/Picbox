@@ -1,0 +1,15 @@
+<%= form_with model: @image do |f| %>
+  <%= f.text_field :title, placeholder: "Title" %>
+  <%= f.text_field :location, placeholder: "Location" %>
+  <%= f.hidden_field :identifier, value: get_img_secure_identifier %>
+  <% tags = Tag.all.map { |t| [t.tag_name, t.id] } %>
+  <%= f.select :tag_ids, options_for_select(tags), {include_blank: false}, multiple: "" %>
+  <%= f.file_field :photo %>
+  <%= f.submit "Post image" %>
+<% end %>
+
+<script>
+  new SlimSelect({
+    select: '#image_tag_ids'
+  })
+</script>

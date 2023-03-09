@@ -1,0 +1,25 @@
+<h1>Images</h1>
+
+<div class="images">
+  <% @current_user.images.each do |img| %>
+    <div class="image_<%=img.title%>">
+      <div class="image-photo">
+        <%= image_tag img.photo, width: 200 if img.photo.attached? %>
+      </div>
+      <div class="image-info">
+        <div class="image-title">
+          <%= img.title %>
+        </div>
+        <div class="image-location">
+          <%= img.location %>
+        </div>
+      </div>
+      <div class="image-tags">
+        <% img.tags.select { |t| @tags.push(t.tag_name) } %>
+        <%= @tags.to_sentence %>
+      </div>
+    </div>
+    <% @tags = [] %>
+    <br><br>
+  <% end %>
+</div>

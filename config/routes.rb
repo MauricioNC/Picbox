@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :images, only: [:index, :new, :create, :update, :destroy]
+
+  get '/images/:identifier',to: 'images#show'
 end

@@ -1,0 +1,17 @@
+<div class="image">
+  <div class="image-photo">
+    <%= image_tag @image.photo, width: 200 if @image.photo.attached? %>
+  </div>
+  <div class="image-info">
+    <div class="image-title">
+      <%= @image.title %>
+    </div>
+    <div class="image-location">
+      <%= @image.location %>
+    </div>
+    <div class="image-tags">
+      <% @image.tags.select { |t| @tags.push(t.tag_name) } %>
+      <%= @tags.to_sentence %>
+    </div>
+  </div>
+</div>
