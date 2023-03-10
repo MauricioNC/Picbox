@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_user
-  before_action :set_image, only: [:update, :destroy]
+  before_action :set_image, only: [:edit, :update, :destroy]
 
   def index
     @tags = []
@@ -26,7 +26,14 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @image = Image.update(image_params)
+  end
+
+  def update
+    if @image.update(image_params)
+      redirect_to images_path
+    else
+      render :edit
+    end
   end
 
   def delete
