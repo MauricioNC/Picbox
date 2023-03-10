@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :images, only: [:index, :new, :create, :update, :destroy]
+  resources :images, except: [:show]
 
   get '/images/:identifier',to: 'images#show'
 end

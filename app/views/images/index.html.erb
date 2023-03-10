@@ -16,7 +16,9 @@
       </div>
       <div class="image-tags">
         <% img.tags.select { |t| @tags.push(t.tag_name) } %>
-        <%= @tags.to_sentence %>
+        <div class="tag">
+          <%= @tags.join("") %>
+        </div>
       </div>
     </div>
     <% @tags = [] %>
