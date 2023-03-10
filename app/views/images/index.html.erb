@@ -2,6 +2,11 @@
 
 <div class="images">
   <% @current_user.images.each do |img| %>
+    <div class="overlay">
+      <div class="top-overlay">
+        <%= link_to "delete", img, method: :delete, data: { confirm: "After deleting this image won't be possible restore it, Are you sure to delete it?" } %>
+      </div>
+    </div>
     <div class="image_<%=img.title%>">
       <div class="image-photo">
         <%= image_tag img.photo, width: 200 if img.photo.attached? %>
@@ -15,10 +20,14 @@
         </div>
       </div>
       <div class="image-tags">
-        <% img.tags.select { |t| @tags.push(t.tag_name) } %>
+        <%
+=begin%>
+ <% img.tags.select { |t| @tags.push(t.tag_name) } %>
         <div class="tag">
           <%= @tags.join("") %>
         </div>
+<%
+=end%>
       </div>
     </div>
     <% @tags = [] %>
