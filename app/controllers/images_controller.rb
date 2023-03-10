@@ -36,8 +36,12 @@ class ImagesController < ApplicationController
     end
   end
 
-  def delete
-    @image.delete
+  def destroy
+    if @image.tags.delete_all && @image.delete
+      redirect_to images_path
+    else
+      render :index, error: "Error deleting the image"
+    end
   end
 
   private
