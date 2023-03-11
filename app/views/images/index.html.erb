@@ -6,6 +6,9 @@
       <div class="top-overlay">
         <%= link_to "delete", img, method: :delete, data: { confirm: "After deleting this image won't be possible restore it, Are you sure to delete it?" } %>
       </div>
+      <div class="like">
+        <%= button_to "Like", "/like/#{img.id}", method: :post %>
+      </div>
     </div>
     <div class="image_<%=img.title%>">
       <div class="image-photo">
