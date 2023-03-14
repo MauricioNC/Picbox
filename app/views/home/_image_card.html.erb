@@ -1,7 +1,5 @@
-<h1>Images</h1>
-
 <div class="images">
-  <% @current_user.images.each do |img| %>
+  <% @images.each do |img| %>
     <div class="overlay">
       <div class="top-overlay">
         <%= link_to "delete", img, method: :delete, data: { confirm: "After deleting this image won't be possible restore it, Are you sure to delete it?" } %>
@@ -30,7 +28,5 @@
         </div>
       </div>
     </div>
-    <% @tags = [] %>
-    <br><br>
   <% end %>
 </div>
