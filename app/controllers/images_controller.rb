@@ -3,12 +3,10 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:edit, :update, :destroy]
 
   def index
-    @tags = []
   end
 
   def show
     @image = Image.find_by(identifier: params[:identifier])
-    @tags = []
   end
 
   def new
